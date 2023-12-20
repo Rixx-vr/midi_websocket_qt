@@ -16,8 +16,18 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void onDeviceList(QMap<QString, QString> devices);
+
+signals:
+    void onDeviceSelected(QString device);
+    void onPortSelected(quint16 port);
+    void onDisconnect();
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
+    bool connected = false;
 };
 #endif // MAINWINDOW_H
